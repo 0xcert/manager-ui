@@ -1,0 +1,69 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: 20px;
+    font-family: 'Overpass Mono';
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  tbody {
+    color: #7D8285;
+
+    tr {
+      border-left: 5px solid transparent;
+      cursor: pointer;
+      transition: background-color ease-in-out .1s, border ease-in-out .1s;
+      
+      &:hover {
+        border-left: 5px solid $primary;
+        background-color: #FAFAFB;
+      }
+    }
+
+    td {
+      border-top: 1px solid #EBEBEB;
+      padding: 20px;
+    }
+
+    .xcert {
+      font-family: 'Overpass Mono';
+      color: $black;
+    }
+  }
+  .xcert__icon {
+    vertical-align: middle;
+    margin-right: 1rem;
+  }
+}
+
+dl {
+  display: flex;
+  flex-flow: row wrap;
+  margin: -1rem 0;
+
+  dt {
+    flex-basis: 20%;
+    padding: 1rem 0;
+    color: #7D8285;
+  }
+
+  dd {
+    flex-basis: 80%;
+    padding: 1rem 0;
+    margin: 0;
+  }
+}
+
+.ellipsis {
+  max-width: 200px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.from {
+  background: url('/arrow-left.svg') no-repeat right center;
+}
