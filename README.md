@@ -1,4 +1,4 @@
-# [0xcert](https://0xcert.org)-manager
+# [0xcert](https://0xcert.org)-manager-ui
 
 This project is the official 0xcert manager repository.
 
