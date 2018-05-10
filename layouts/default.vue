@@ -1,23 +1,20 @@
 <template>
   <div class="application">
-    <aside class="fixed">
-      <div class="brand">
-        <Logo :width="150" :color="'white'" />
-      </div>
-      <Navigation/>
-    </aside>
-    <!-- <nav class="toolbar fixed">
+    <nav class="header">
       <div class="nav--content">
-
+        <strong class="blue">manager.</strong>0xcert.org
       </div>
-    </nav> -->
+    </nav>
     <main>
       <div class="main--content">
-        <x-container>
-          <nuxt />
-        </x-container>
+        <nuxt />
       </div>
     </main>
+    <nav class="toolbar">
+      <div class="nav--content">
+        <Button :type="['primary', 'large']">Review code</Button>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -64,23 +61,20 @@ body {
   color: rgba(0,0,0,.87);
 }
 
+nav.header {
+  display: block;
+  width: 100%;
+  background-color: $white;
+  will-change: padding-left;
+  border-bottom: 1px solid $border;
+}
+
 nav.toolbar {
   display: block;
   width: 100%;
-  margin-top: 0px;
-  padding-right: 0px;
-  padding-left: 300px;
   background-color: $white;
-  transform: translateY(0px);
   will-change: padding-left;
-  border-bottom: 1px solid $border;
-
-  &.fixed {
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
-  }
+  border-top: 1px solid $border;
 }
 
 .nav--content {
@@ -89,6 +83,8 @@ nav.toolbar {
   height: 90px;
   padding: 0 40px;
   color: #9B9B9B;
+  justify-content: center;
+  text-align: center;
 }
 
 aside {
@@ -117,7 +113,6 @@ aside {
 
 main {
   // padding: 90px 0px 0px 300px;
-  padding: 0px 0px 0px 300px;
   display: flex;
   flex: 1 0 auto;
   max-width: 100%;
@@ -125,21 +120,17 @@ main {
 }
 
 .main--content {
-  flex: 1 1 auto;
-  max-width: 100%;
-}
-
-.brand {
   display: flex;
-  background-color: #3D8CFF;
-  padding: 0 30px;
-  align-items: center;
-  height: 90px;
+  flex-basis: 100%;
 }
 
 .box {
   background-color: rgba(245,246,248,0.7);
   padding: 25px 28px;
+}
+
+.blue {
+  color: $primary;
 }
 </style>
 
