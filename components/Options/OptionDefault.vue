@@ -3,7 +3,14 @@
     <div slot="header" class="offside--header">
       <Token/>ERC721
     </div>
-    <div slot="close" class="offside--close" @click="$store.commit('showDefault', false)"><img src="/close.svg"/></div>
+
+    <div 
+      @click="$store.commit('showDefault', false)"
+      slot="close" 
+      class="offside--close">
+      <img src="/close.svg"/>
+    </div>
+
     <div slot="body">
       <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
       <Toggler/>
@@ -13,16 +20,17 @@
       <label for="name">Name:</label>
       <input name="name" type="text" placeholder="Enter name">
       <label for="name">Symbol:</label>
-      <input name="name" type="text" placeholder="Enter name">
+      <input name="name" type="text" placeholder="Enter symbol">
       <label for="name">URI:</label>
-      <input name="name" type="text" placeholder="Enter name">
+      <input name="name" type="text" placeholder="Enter URI">
     </form>
-    
+
     <div slot="actions">
       <Button 
         @click.native="$store.commit('showDefault', false)"
         :type="['secondary', 'large']">
-        Save</Button>
+        Save
+      </Button>
     </div>
   </x-offside>
 </template>
