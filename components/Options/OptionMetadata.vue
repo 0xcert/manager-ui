@@ -10,6 +10,13 @@
       <Toggler/>
     </div>
     
+    <div slot="actions">
+      <Button 
+        @click.native="$store.commit('showDefault', false)"
+        :type="['secondary', 'large']">
+        Save
+      </Button>
+    </div>    
   </x-offside>
 </template>
 

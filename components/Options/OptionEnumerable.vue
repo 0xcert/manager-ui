@@ -9,6 +9,14 @@
       <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
       <Toggler/>
     </div>
+
+    <div slot="actions">
+      <Button 
+        @click.native="$store.commit('showDefault', false)"
+        :type="['secondary', 'large']">
+        Save
+      </Button>
+    </div>
   </x-offside>
 </template>
 
