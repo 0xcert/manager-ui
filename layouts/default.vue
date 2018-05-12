@@ -1,20 +1,16 @@
 <template>
   <div class="application">
-    <nav class="header">
-      <div class="nav--content">
-        <strong class="blue">manager.</strong>0xcert.org
-      </div>
-    </nav>
+    <x-nav :class="'header'">
+      <strong class="blue">manager.</strong>0xcert.org
+    </x-nav>
     <main>
       <div class="main--content">
         <nuxt />
       </div>
     </main>
-    <nav class="toolbar">
-      <div class="nav--content">
-        <Button :type="['primary', 'large']">Review code</Button>
-      </div>
-    </nav>
+    <x-nav :class="'toolbar'">
+      <Button :type="['primary', 'large']">Review code</Button>
+    </x-nav>
   </div>
 </template>
 
@@ -59,32 +55,6 @@ body {
   max-width: 100%;
   position: relative;
   color: rgba(0,0,0,.87);
-}
-
-nav.header {
-  display: block;
-  width: 100%;
-  background-color: $white;
-  will-change: padding-left;
-  border-bottom: 1px solid $border;
-}
-
-nav.toolbar {
-  display: block;
-  width: 100%;
-  background-color: $white;
-  will-change: padding-left;
-  border-top: 1px solid $border;
-}
-
-.nav--content {
-  display: flex;
-  align-items: center;
-  height: 90px;
-  padding: 0 40px;
-  color: #9B9B9B;
-  justify-content: center;
-  text-align: center;
 }
 
 aside {

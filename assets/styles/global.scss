@@ -67,3 +67,19 @@ dl {
 .from {
   background: url('/arrow-left.svg') no-repeat right center;
 }
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all .4s ease-in-out;
+}
+.slide-enter, .slide-leave-to {
+  transform: translateX(120%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .4s ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
