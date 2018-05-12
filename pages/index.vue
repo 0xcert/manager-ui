@@ -109,10 +109,6 @@ export default {
   z-index: 4;
 }
 
-.offside--header {
-  flex-grow: 1;
-}
-
 .tokenIcon {
   margin-right: 1rem;
   vertical-align: middle;

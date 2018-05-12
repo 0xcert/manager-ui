@@ -8,7 +8,7 @@
         <nuxt />
       </div>
     </main>
-    <x-nav :class="'toolbar'">
+    <x-nav :class="'toolbar'" center>
       <Button :type="['primary', 'large']">Review code</Button>
     </x-nav>
   </div>

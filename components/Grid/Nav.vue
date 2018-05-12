@@ -1,9 +1,7 @@
 <template>
   <nav>
-    <div class="nav--content">
-
-        <slot />
-
+    <div class="nav--content" :class="{center : center}">
+      <slot />
     </div>
   </nav>
 </template>
@@ -11,7 +9,7 @@
 <script>
   export default {
     props: {
-      closable: {
+      center: {
         type: Boolean
       }
     }
@@ -39,12 +37,10 @@ nav {
   height: 90px;
   padding: 0 40px;
   color: #9B9B9B;
-  justify-content: center;
-  text-align: center;
-
-  .left & {
-    text-align: left;
-    justify-content: left;
+  
+  &.center {
+    justify-content: center;
+    text-align: center;
   }
 }
 

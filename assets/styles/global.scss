@@ -64,10 +64,6 @@ dl {
   overflow: hidden;
 }
 
-.from {
-  background: url('/arrow-left.svg') no-repeat right center;
-}
-
 .slide-enter-active,
 .slide-leave-active {
   transition: all .4s ease-in-out;
@@ -80,6 +76,30 @@ dl {
 .fade-leave-active {
   transition: opacity .4s ease-in-out;
 }
+
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+.offside--header {
+  flex-grow: 1;
+  text-align: left;
+}
+
+// Forms
+
+form label {
+  display: block;
+  font-family: 'Overpass Mono', monospace;
+  margin-bottom: 5px;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  background: $border;
+  border: none;
+  padding: 15px 15px;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 1rem;
 }
