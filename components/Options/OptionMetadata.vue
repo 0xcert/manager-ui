@@ -4,9 +4,12 @@
       <Token :color="'#32CAE8'"/>ERC721 Metadata
     </div>
     <div slot="close" class="offside--close" @click="$store.commit('showMetadata', false)"><img src="/close.svg"/></div>
-    <p slot="description">
-      Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. Seamlessly myocardinate plug-and-play partnerships after client-based growth strategies. Synergistically productivate emerging vortals rather than professional mindshare. Continually incentivize performance based infomediaries whereas turnkey methodologies.
-    </p>
+
+    <div slot="body">
+      <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
+      <Toggler/>
+    </div>
+    
   </x-offside>
 </template>
 

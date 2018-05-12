@@ -36,11 +36,8 @@
 </template>
 
 <script>
-import Toggler from '~/components/Toggler'
 export default {
-  components: {
-    Toggler
-  }
+
 }
 </script>
 
