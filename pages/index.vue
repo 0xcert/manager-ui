@@ -1,44 +1,65 @@
 <template>
   <x-container class="middle">
-    <h1>Create a Non-fungible Project</h1>
-    <h4>
-      Enable and configure the features of your non-fungible token smart contract, review and deploy it to the Etherum blockchain
-    </h4>
+    <transition name="fade" mode="out-in">
+      <div class="create" v-if="!$store.state.showCode" key="create">
+        <h1>Create a Non-fungible Project</h1>
+        <h4>
+          Enable and configure the features of your non-fungible token smart contract, review and deploy it to the Etherum blockchain
+        </h4>
 
-    <div class="errors">
-      <p>Login to Metamask and select Reposten Network</p>
-      <p>You need at least 0.1 ETH (you have 0 ETH)</p>
-    </div>
+        <div class="errors">
+          <p>Login to Metamask and select Reposten Network</p>
+          <p>You need at least 0.1 ETH (you have 0 ETH)</p>
+        </div>
 
-    <strong>Select smart contract features:</strong>
+        <strong>Select smart contract features:</strong>
 
-    <div class="options">
-      <Option 
-        @click.native="$store.commit('showDefault', true)" 
-        :class="{checked : $store.state.showDefault}">
-        ERC721
-      </Option>
-      <Option 
-        @click.native="$store.commit('showMetadata', true)" 
-        :class="{checked : $store.state.showMetadata}" 
-        :tokenColor="'#32CAE8'">
-        ERC 721 Metadata
-      </Option>
-      <Option 
-        @click.native="$store.commit('showEnumerable', true)" 
-        :class="{checked : $store.state.showEnumerable}" 
-        :tokenColor="'#F67068'">
-        ERC 721 Enumerable
-      </Option>
-      <Option 
-        @click.native="$store.commit('showCertificate', true)" 
-        :class="{checked : $store.state.showCertificate}" 
-        :tokenColor="'#3EFF8A'">
-        ERC 721 Certificate
-      </Option>
-    </div>
+        <div class="options">
+          <Option 
+            @click.native="$store.commit('showDefault', true)" 
+            :class="{
+              checked : $store.state.showDefault,
+              enabled : $store.state.enableDefault
+              }">
+            ERC721
+          </Option>
+          <Option 
+            @click.native="$store.commit('showMetadata', true)" 
+            :class="{
+              checked : $store.state.showMetadata,
+              enabled : $store.state.enableMetadata
+            }" 
+            :tokenColor="'#32CAE8'">
+            ERC 721 Metadata
+          </Option>
+          <Option 
+            @click.native="$store.commit('showEnumerable', true)" 
+            :class="{
+              checked : $store.state.showEnumerable,
+              enabled : $store.state.enableEnumerable
+              }" 
+            :tokenColor="'#F67068'">
+            ERC 721 Enumerable
+          </Option>
+          <Option 
+            @click.native="$store.commit('showCertificate', true)" 
+            :class="{
+              checked : $store.state.showCertificate,
+              enabled : $store.state.enableCertificate
+              }" 
+            :tokenColor="'#3EFF8A'">
+            ERC 721 Certificate
+          </Option>
+        </div>
+      </div>
 
-    <transition name="fade">
+      <div class="review" v-if="$store.state.showCode" key="review">
+        <h1>Review your code</h1>
+        <prism language="javascript" :code="code"></prism>
+      </div>
+    </transition>
+
+    <transition name="fade" mode="out-in">
       <div class="shade" v-if="$store.state.shade"></div>
     </transition>
 
@@ -59,6 +80,36 @@ import OptionEnumerable from '~/components/Options/OptionEnumerable'
 import OptionCertificate from '~/components/Options/OptionCertificate'
 
 export default {
+  data () {
+    return {
+      code: 
+`contract Mortal {
+    /* Define variable owner of the type address */
+    address owner;
+
+    /* This function is executed at initialization and sets the owner of the contract */
+    function Mortal() { owner = msg.sender; }
+
+    /* Function to recover the funds on the contract */
+    function kill() { if (msg.sender == owner) selfdestruct(owner); }
+}
+
+contract Greeter is Mortal {
+    /* Define variable greeting of the type string */
+    string greeting;
+
+    /* This runs when the contract is executed */
+    function Greeter(string _greeting) public {
+        greeting = _greeting;
+    }
+
+    /* Main function */
+    function greet() constant returns (string) {
+        return greeting;
+    }
+}`
+    }
+  },
   components: {
     OptionDefault,
     OptionMetadata,
@@ -101,7 +152,7 @@ export default {
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.6);
-  z-index: 0;
+  z-index: 6;
   height: 100%;
 }
 
@@ -116,5 +167,7 @@ export default {
 
 .offside--close {
   cursor: pointer;
+  position: relative;
+  z-index: 8;
 }
 </style>

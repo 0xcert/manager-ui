@@ -13,7 +13,10 @@
 
     <div slot="body">
       <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
-      <Toggler/>
+      <Toggler 
+        @click.native.once="$store.commit('enableDefault')"
+        :checked="$store.state.enableDefault"
+      />
     </div>
 
     <form slot="form">

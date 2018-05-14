@@ -10,10 +10,15 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
  .container {
-   padding: 40px;
+   padding: 20px;
    display: flex;
    flex-flow: column;
+   overflow-y: scroll;
+
+  @include media('medium') {
+    padding: 40px;
+  }
  }
 </style>

@@ -7,7 +7,12 @@ const createStore = () => {
       showMetadata: false,
       showEnumerable: false,
       showCertificate: false,
-      shade: false
+      shade: false,
+      showCode: false,
+      enableDefault: false,
+      enableMetadata: false,
+      enableEnumerable: false,
+      enableCertificate: false
     },
     mutations: {
       showDefault(state, open) {
@@ -26,6 +31,21 @@ const createStore = () => {
         state.showCertificate = open
         state.shade = open
       },
+      showCode(state, show) {
+        state.showCode = show
+      },
+      enableDefault(state) {
+        state.enableDefault = !state.enableDefault
+      },
+      enableMetadata(state) {
+        state.enableMetadata = !state.enableMetadata
+      },
+      enableEnumerable(state) {
+        state.enableEnumerable = !state.enableEnumerable
+      },
+      enableCertificate(state) {
+        state.enableCertificate = !state.enableCertificate
+      }
     }
   })
 }

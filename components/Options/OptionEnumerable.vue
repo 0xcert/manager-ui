@@ -7,12 +7,15 @@
 
     <div slot="body">
       <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
-      <Toggler/>
+      <Toggler 
+        @click.native.once="$store.commit('enableEnumerable')"
+        :checked="$store.state.enableEnumerable"
+      />
     </div>
 
     <div slot="actions">
       <Button 
-        @click.native="$store.commit('showDefault', false)"
+        @click.native="$store.commit('showEnumerable', false)"
         :type="['secondary', 'large']">
         Save
       </Button>

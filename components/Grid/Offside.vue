@@ -30,19 +30,31 @@
   height: 100%;
   right: 0;
   top: 0;
-  width: 60%;
+  width: 90%;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  z-index: 7;
+
+  @include media('medium') {
+     width: 60%;
+  }
 
   &__form {
     border-top: 1px solid $border;
-    padding: 30px 40px;
     text-align: left;
-    flex-grow: 1;
+    padding: 30px;
+
+    @include media('medium') {
+      padding: 30px 40px;
+    }
   }
 
   &__content {
-    padding: 30px 40px;
     text-align: left;
+    padding: 30px;
+
+    @include media('medium') {
+      padding: 30px 40px;
+    }
 
     p {
       margin-top: 0;

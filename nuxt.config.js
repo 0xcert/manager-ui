@@ -25,7 +25,8 @@ module.exports = {
   plugins: [
     { src: '~/plugins/ga.js', ssr: false },
     { src: '~plugins/core-components.js' },
-    { src: '~plugins/date.js' }
+    { src: '~plugins/date.js' },
+    { src: '~plugins/prism.js', ssr: false }
   ],
   modules: [ 
     'nuxt-sass-resources-loader'

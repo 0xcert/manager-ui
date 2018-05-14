@@ -11,3 +11,28 @@ $aside--color: #9B9B9B;
 $aside--hover: #403F4B;
 $border: #EBEBEB;
 $shadow: #1A1B23;
+
+$navHeight: 70px;
+$navHeightMedium: 90px;
+
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+@mixin media($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

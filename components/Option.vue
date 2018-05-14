@@ -32,8 +32,12 @@ svg {
 
   &.checked {
     opacity: 1;
-    background: url('/checked.svg') no-repeat 10px 10px;
     border: 1px solid darken($border, 20%);
+  }
+
+  &.enabled {
+    opacity: 1;
+    background: url('/checked.svg') no-repeat 10px 10px;
   }
 
   &:hover {

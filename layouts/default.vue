@@ -1,6 +1,6 @@
 <template>
   <div class="application">
-    <x-nav :class="'header'">
+    <x-nav :class="'header'" center>
       <strong class="blue">manager.</strong>0xcert.org
     </x-nav>
     <main>
@@ -9,7 +9,23 @@
       </div>
     </main>
     <x-nav :class="'toolbar'" center>
-      <Button :type="['primary', 'large']">Review code</Button>
+      <Button 
+        v-if="!$store.state.showCode"
+        @click.native="$store.commit('showCode', true)"
+        :type="['primary', 'large']">
+        Review code
+      </Button>
+      <Button 
+        v-if="$store.state.showCode"
+        :type="['primary', 'large']">
+        Deploy
+      </Button>
+      <Button 
+        v-if="$store.state.showCode"
+        @click.native="$store.commit('showCode', false)"
+        :type="['secondary', 'large']">
+        Edit options
+      </Button>
     </x-nav>
   </div>
 </template>
