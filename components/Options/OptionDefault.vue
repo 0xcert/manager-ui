@@ -20,17 +20,13 @@
     </div>
 
     <form slot="form">
-      <label for="name">Name:</label>
-      <input name="name" type="text" placeholder="Enter name">
-      <label for="name">Symbol:</label>
-      <input name="name" type="text" placeholder="Enter symbol">
-      <label for="name">URI:</label>
-      <input name="name" type="text" placeholder="Enter URI">
+      <label for="name">Contract name:</label>
+      <input name="contractName" type="text" placeholder="Enter contract name">
     </form>
 
     <div slot="actions">
       <Button 
-        @click.native="$store.commit('showDefault', false)"
+        @click.native="submit"
         :type="['secondary', 'large']">
         Save
       </Button>
@@ -40,7 +36,18 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      contractName: 'MyToken',
+      enabled: false
+    }
+  },
+  methods: {
+    submit () {
+      this.$store.commit('setErc721', this.$data)
+      this.$store.commit('showDefault', false)
+    }
+  }
 }
 </script>
 

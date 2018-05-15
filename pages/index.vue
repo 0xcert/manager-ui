@@ -41,21 +41,12 @@
             :tokenColor="'#F67068'">
             ERC 721 Enumerable
           </Option>
-          <Option 
-            @click.native="$store.commit('showCertificate', true)" 
-            :class="{
-              checked : $store.state.showCertificate,
-              enabled : $store.state.enableCertificate
-              }" 
-            :tokenColor="'#3EFF8A'">
-            ERC 721 Certificate
-          </Option>
         </div>
       </div>
 
       <div class="review" v-if="$store.state.showCode" key="review">
         <h1>Review your code</h1>
-        <prism language="javascript" :code="code"></prism>
+        <prism language="javascript" :code="this.$store.contract.src"></prism>
       </div>
     </transition>
 
@@ -67,7 +58,6 @@
       <OptionDefault v-if="$store.state.showDefault" key="showDefault"/>
       <OptionMetadata v-if="$store.state.showMetadata" key="showMetadata" />
       <OptionEnumerable v-if="$store.state.showEnumerable" key="showEnumerable" />
-      <OptionCertificate v-if="$store.state.showCertificate" key="showCertificate" />
     </transition> 
 
   </x-container>
@@ -77,44 +67,15 @@
 import OptionDefault from '~/components/Options/OptionDefault'
 import OptionMetadata from '~/components/Options/OptionMetadata'
 import OptionEnumerable from '~/components/Options/OptionEnumerable'
-import OptionCertificate from '~/components/Options/OptionCertificate'
 
 export default {
   data () {
-    return {
-      code: 
-`contract Mortal {
-    /* Define variable owner of the type address */
-    address owner;
-
-    /* This function is executed at initialization and sets the owner of the contract */
-    function Mortal() { owner = msg.sender; }
-
-    /* Function to recover the funds on the contract */
-    function kill() { if (msg.sender == owner) selfdestruct(owner); }
-}
-
-contract Greeter is Mortal {
-    /* Define variable greeting of the type string */
-    string greeting;
-
-    /* This runs when the contract is executed */
-    function Greeter(string _greeting) public {
-        greeting = _greeting;
-    }
-
-    /* Main function */
-    function greet() constant returns (string) {
-        return greeting;
-    }
-}`
-    }
+    return {}
   },
   components: {
     OptionDefault,
     OptionMetadata,
     OptionEnumerable,
-    OptionCertificate,
   }
 }
 </script>

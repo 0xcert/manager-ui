@@ -11,12 +11,13 @@
     <x-nav :class="'toolbar'" center>
       <Button 
         v-if="!$store.state.showCode"
-        @click.native="$store.commit('showCode', true)"
+        @click.native="review"
         :type="['primary', 'large']">
         Review code
       </Button>
       <Button 
         v-if="$store.state.showCode"
+        @click.native="deploy"
         :type="['primary', 'large']">
         Deploy
       </Button>
@@ -38,6 +39,67 @@ export default {
   components: {
     Logo,
     Navigation
+  },
+  methods: {
+    async review () {
+      await this.compile();
+      this.$store.commit('showCode', true)
+    },
+    async compile () {
+      // RPC client initialization
+      var jaysonBrowserClient = require('jayson/lib/client/browser');
+      var callServer = function(request, callback) {
+        fetch('http://localhost:4444', {
+          method: 'POST',
+          body: request,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(function(res) { return res.text(); })
+        .then(function(text) { callback(null, text); })
+        .catch(function(err) { callback(err); });
+      };
+      var client = jaysonBrowserClient(callServer, {});
+      // build solidity code through RPC
+      const [src, bin, abi] = await new Promise((resolve, reject) => {
+        client.request('compile', [
+          this.$store.erc721,
+          this.$store.erc721Metadata,
+          this.$store.erc721Enumerable,
+        ], function(err, error, result) {
+          if(err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        });
+      })
+      // store countract source
+      this.$store.contract = { src, bin, abi }
+    },
+    async deploy () {
+      const web3 = new window.Web3(window.Web3.givenProvider)
+      const contract = new web3.eth.Contract(this.$store.contract.abi)
+      const address = await contract.deploy({
+        data: this.$store.contract.bin,
+        arguments: [],
+      }).send({
+        from: await web3.eth.getAccounts().then((a) => a[0]),
+        gas: 1500000,
+        gasPrice: '5000000000',
+      })
+      .then((newContractInstance) => {
+        return newContractInstance.options.address
+      }).catch((err) => {
+        console.log('Error', err)
+        return null
+      });
+      this.$store.commit('setContractAddress', address)
+      this.$store.commit('showDefault', false)
+
+      alert(`Contract is deployed: ${address}`)
+    }
   }
 }
 </script>

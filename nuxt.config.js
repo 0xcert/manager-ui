@@ -43,6 +43,9 @@ module.exports = {
     linkExactActiveClass: 'exact-active'
   },
   build: {
+    vendor: [
+      '~/assets/js/web3.js'
+    ],
     /*
     ** Run ESLint on save
     */

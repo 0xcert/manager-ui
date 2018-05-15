@@ -15,7 +15,7 @@
 
     <div slot="actions">
       <Button 
-        @click.native="$store.commit('showEnumerable', false)"
+        @click.native="submit"
         :type="['secondary', 'large']">
         Save
       </Button>
@@ -24,9 +24,19 @@
 </template>
 
 <script>
-  export default {
-    
+export default {
+  data () {
+    return {
+      enabled: false
+    }
+  },
+  methods: {
+    submit () {
+      this.$store.commit('setErc721Enumerable', this.$data)
+      this.$store.commit('showEnumerable', false)
+    }
   }
+}
 </script>
 
 <style scoped>

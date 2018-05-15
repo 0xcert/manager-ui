@@ -12,9 +12,29 @@ const createStore = () => {
       enableDefault: false,
       enableMetadata: false,
       enableEnumerable: false,
-      enableCertificate: false
+      enableCertificate: false,
+      erc721: {},
+      erc721Metadata: {},
+      erc721Enumerable: {},
+      contract: {},
+      contractAddress: ''
     },
     mutations: {
+      setContractAddress(state, address) {
+        state.contractAddress = address
+      },
+      setErc721(state, data) {
+        state.erc721 = data
+      },
+      setErc721Metadata(state, data) {
+        state.erc721Metadata = data
+      },
+      setErc721Enumerable(state, data) {
+        state.erc721Enumerable = data
+      },
+      setContract(state, data) {
+        state.contract = data
+      },
       showDefault(state, open) {
         state.showDefault = open
         state.shade = open

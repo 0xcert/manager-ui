@@ -12,10 +12,19 @@
         :checked="$store.state.enableMetadata"
       />
     </div>
+
+    <form slot="form">
+      <label for="name">Name:</label>
+      <input name="name" type="text" placeholder="Enter name">
+      <label for="name">Symbol:</label>
+      <input name="symbol" type="text" placeholder="Enter symbol">
+      <label for="name">URI:</label>
+      <input name="uri" type="text" placeholder="Enter URI">
+    </form>
     
     <div slot="actions">
       <Button 
-        @click.native="$store.commit('showMetadata', false)"
+        @click.native="submit"
         :type="['secondary', 'large']">
         Save
       </Button>
@@ -24,9 +33,22 @@
 </template>
 
 <script>
-  export default {
-    
+export default {
+  data () {
+    return {
+      name: '',
+      symbol: '',
+      uri: '',
+      enabled: false
+    }
+  },
+  methods: {
+    submit () {
+      this.$store.commit('setErc721Metadata', this.$data)
+      this.$store.commit('showMetadata', false)
+    }
   }
+}
 </script>
 
 <style scoped>
