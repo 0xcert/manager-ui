@@ -10,25 +10,25 @@
     </main>
     <x-nav :class="'toolbar'" center>
       <Button 
-        v-if="$store.state.create"
+        v-if="$store.state.show.create"
         @click.native="review"
         :type="['primary', 'large']">
         Review code
       </Button>
       <Button 
-        v-if="$store.state.review"
+        v-if="$store.state.show.review"
         @click.native="deploy"
         :type="['primary', 'large']">
         Deploy
       </Button>
       <Button 
-        v-if="$store.state.review"
+        v-if="$store.state.show.review"
         @click.native="$store.dispatch('goToCreate')"
         :type="['secondary', 'large']">
         Edit options
       </Button>
       <Button 
-        v-if="$store.state.success"
+        v-if="$store.state.show.success"
         @click.native="$store.dispatch('goToCreate')"
         :type="['secondary', 'large']">
         Create another one!

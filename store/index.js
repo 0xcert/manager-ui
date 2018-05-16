@@ -3,11 +3,13 @@ import Vuex from 'vuex'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      create: true,
-      review: false,
-      loading: false,
-      success: false,
-      shade: false,
+      show: {
+        create: true,
+        review: false,
+        loading: false,
+        success: false,
+        shade: false
+      },
       showDefault: false,
       showMetadata: false,
       showEnumerable: false,
@@ -40,31 +42,31 @@ const createStore = () => {
       },
       showDefault(state, open) {
         state.showDefault = open
-        state.shade = open
+        state.show.shade = open
       },
       showMetadata(state, open) {
         state.showMetadata = open
-        state.shade = open
+        state.show.shade = open
       },
       showEnumerable(state, open) {
         state.showEnumerable = open
-        state.shade = open
+        state.show.shade = open
       },
       showCertificate(state, open) {
         state.showCertificate = open
-        state.shade = open
+        state.show.shade = open
       },
       showCreate(state, show) {
-        state.create = show
+        state.show.create = show
       },
       showReview(state, show) {
-        state.review = show
+        state.show.review = show
       },
       showLoading(state, show) {
-        state.loading = show
+        state.show.loading = show
       },
       showSuccess(state, show) {
-        state.success = show
+        state.show.success = show
       },
       enableDefault(state) {
         state.enableDefault = !state.enableDefault
