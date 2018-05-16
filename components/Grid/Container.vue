@@ -15,7 +15,7 @@
    padding: 20px;
    display: flex;
    flex-flow: column;
-   overflow-y: scroll;
+   overflow-y: auto;
 
   @include media('medium') {
     padding: 40px;

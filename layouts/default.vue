@@ -115,47 +115,44 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
-  background-repeat: no-repeat;
   font-family: "Roboto", -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0;
   margin: 0;
+  height: 100%;
+}
+
+#__nuxt {
+  height: 100%;
+}
+
+#__layout {
+  background: linear-gradient(to bottom right, $primary, #32CAE8 );
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .application {
+  background: white;
   flex: 1 1 auto;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  max-width: 100%;
+  height: 100vh;
   position: relative;
   color: rgba(0,0,0,.87);
-}
 
-aside {
-  background-color: $aside--bg;
-  height: 100%;
-  margin-top: 0px;
-  max-height: calc(100% - 0px);
-  transform: translateX(0px); // hide on mobile translate - 300
-  width: 300px;
-  transition: transform 0.2s;
-
-  display: block;
-  left: 0;
-  max-width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  pointer-events: auto;
-  top: 0;
-  will-change: transform;
-  z-index: 3;
-
-  &.fixed {
-    position: fixed;
+  @include media('medium') {
+    max-width: 1080px;
+    height: 750px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: rgba(11, 103, 157, 0.7) 0px 10px 28px 0px;
   }
 }
 

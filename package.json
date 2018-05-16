@@ -18,6 +18,7 @@
     "vue-prismjs": "^1.2.0"
   },
   "devDependencies": {
+    "ajv": "^6.5.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^4.0.1",

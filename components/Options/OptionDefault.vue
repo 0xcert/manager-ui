@@ -19,7 +19,7 @@
       />
     </div>
 
-    <form slot="form">
+    <form slot="form" action.prevent.default>
       <label for="name">Contract name:</label>
       <input name="contractName" type="text" placeholder="Enter contract name">
     </form>
