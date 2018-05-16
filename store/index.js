@@ -3,12 +3,15 @@ import Vuex from 'vuex'
 const createStore = () => {
   return new Vuex.Store({
     state: {
+      create: true,
+      review: false,
+      loading: false,
+      success: false,
+      shade: false,
       showDefault: false,
       showMetadata: false,
       showEnumerable: false,
       showCertificate: false,
-      shade: false,
-      showCode: false,
       enableDefault: false,
       enableMetadata: false,
       enableEnumerable: false,
@@ -51,8 +54,17 @@ const createStore = () => {
         state.showCertificate = open
         state.shade = open
       },
-      showCode(state, show) {
-        state.showCode = show
+      showCreate(state, show) {
+        state.create = show
+      },
+      showReview(state, show) {
+        state.review = show
+      },
+      showLoading(state, show) {
+        state.loading = show
+      },
+      showSuccess(state, show) {
+        state.success = show
       },
       enableDefault(state) {
         state.enableDefault = !state.enableDefault
@@ -65,6 +77,32 @@ const createStore = () => {
       },
       enableCertificate(state) {
         state.enableCertificate = !state.enableCertificate
+      }
+    },
+    actions: {
+      goToCreate ({ commit }) {
+        commit('showCreate', true)
+        commit('showReview', false)
+        commit('showLoading', false)
+        commit('showSuccess', false)
+      },
+      goToReview ({ commit }) {
+        commit('showCreate', false)
+        commit('showReview', true)
+        commit('showLoading', false)
+        commit('showSuccess', false)
+      },
+      goToLoading ({ commit }) {
+        commit('showCreate', false)
+        commit('showReview', false)
+        commit('showLoading', true)
+        commit('showSuccess', false)
+      },
+      goToSuccess ({ commit }) {
+        commit('showCreate', false)
+        commit('showReview', false)
+        commit('showLoading', false)
+        commit('showSuccess', true)
       }
     }
   })

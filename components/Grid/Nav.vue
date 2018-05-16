@@ -25,7 +25,6 @@ nav {
 
   &.header {
     border-bottom: 1px solid $border;
-
   }
 
   &.toolbar {
@@ -50,6 +49,17 @@ nav {
     justify-content: center;
     text-align: center;
   }
+}
+
+.offside--close {
+  cursor: pointer;
+  position: relative;
+  z-index: 8;
+}
+
+.tokenIcon {
+  margin-right: 1rem;
+  vertical-align: middle;
 }
 
 </style>

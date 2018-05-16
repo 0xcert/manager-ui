@@ -10,22 +10,28 @@
     </main>
     <x-nav :class="'toolbar'" center>
       <Button 
-        v-if="!$store.state.showCode"
+        v-if="$store.state.create"
         @click.native="review"
         :type="['primary', 'large']">
         Review code
       </Button>
       <Button 
-        v-if="$store.state.showCode"
+        v-if="$store.state.review"
         @click.native="deploy"
         :type="['primary', 'large']">
         Deploy
       </Button>
       <Button 
-        v-if="$store.state.showCode"
-        @click.native="$store.commit('showCode', false)"
+        v-if="$store.state.review"
+        @click.native="$store.dispatch('goToCreate')"
         :type="['secondary', 'large']">
         Edit options
+      </Button>
+      <Button 
+        v-if="$store.state.success"
+        @click.native="$store.dispatch('goToCreate')"
+        :type="['secondary', 'large']">
+        Create another one!
       </Button>
     </x-nav>
   </div>
@@ -43,7 +49,7 @@ export default {
   methods: {
     async review () {
       await this.compile();
-      this.$store.commit('showCode', true)
+      this.$store.dispatch('goToReview')
     },
     async compile () {
       // RPC client initialization
@@ -79,6 +85,7 @@ export default {
       this.$store.contract = { src, bin, abi }
     },
     async deploy () {
+      this.$store.dispatch('goToLoading')
       const web3 = new window.Web3(window.Web3.givenProvider)
       const contract = new web3.eth.Contract(this.$store.contract.abi)
       const address = await contract.deploy({
@@ -96,9 +103,7 @@ export default {
         return null
       });
       this.$store.commit('setContractAddress', address)
-      this.$store.commit('showDefault', false)
-
-      alert(`Contract is deployed: ${address}`)
+      this.$store.dispatch('goToSuccess')
     }
   }
 }
