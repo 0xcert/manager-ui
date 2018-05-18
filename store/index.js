@@ -8,7 +8,8 @@ const createStore = () => {
         review: false,
         loading: false,
         success: false,
-        shade: false
+        shade: false,
+        error: false
       },
       showDefault: false,
       showMetadata: false,
@@ -73,6 +74,9 @@ const createStore = () => {
       showSuccess(state, show) {
         state.show.success = show
       },
+      showError(state, show) {
+        state.show.error = show
+      },      
       enableDefault(state) {
         state.enableDefault = !state.enableDefault
         state.erc721.enabled = !state.enableDefault
@@ -94,24 +98,35 @@ const createStore = () => {
         commit('showCreate', true)
         commit('showReview', false)
         commit('showLoading', false)
+        commit('showError', false)
         commit('showSuccess', false)
       },
       goToReview ({ commit }) {
         commit('showCreate', false)
         commit('showReview', true)
         commit('showLoading', false)
+        commit('showError', false)
         commit('showSuccess', false)
       },
       goToLoading ({ commit }) {
         commit('showCreate', false)
         commit('showReview', false)
         commit('showLoading', true)
+        commit('showError', false)
+        commit('showSuccess', false)
+      },
+      goToError ({ commit }) {
+        commit('showCreate', false)
+        commit('showReview', false)
+        commit('showLoading', false)
+        commit('showError', true)
         commit('showSuccess', false)
       },
       goToSuccess ({ commit }) {
         commit('showCreate', false)
         commit('showReview', false)
         commit('showLoading', false)
+        commit('showError', false)
         commit('showSuccess', true)
       }
     }

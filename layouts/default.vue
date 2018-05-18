@@ -33,6 +33,12 @@
         :type="['secondary', 'large']">
         Create another one!
       </Button>
+      <Button 
+        v-if="$store.state.show.error"
+        @click.native="$store.dispatch('goToReview')"
+        :type="['secondary', 'large']">
+        Go back
+      </Button>
     </x-nav>
   </div>
 </template>
@@ -141,7 +147,6 @@ body {
 
 #__layout {
   background: linear-gradient(to bottom right, $primary, #32CAE8 );
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
