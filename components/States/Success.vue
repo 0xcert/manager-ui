@@ -13,7 +13,7 @@
     <h1>Your smart contract has been successfully deployed!</h1>
     Your can check it on ethscan:
     <h3>
-      <a :href="'https://rinkeby.etherscan.io/address/' + this.$store.state.contractAddress" target="_blank">{{ this.$store.state.contractAddress }}</a>
+      <a :href="'https://ropsten.etherscan.io/address/' + this.$store.state.contractAddress" target="_blank">{{ this.$store.state.contractAddress }}</a>
     </h3>
   </div>
 </template>

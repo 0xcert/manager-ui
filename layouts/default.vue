@@ -96,14 +96,13 @@ export default {
       const contract = new web3.eth.Contract(this.$store.contract.abi)
       const address = await contract.deploy({
         data: this.$store.contract.bin,
-        arguments: [],
+        arguments: this.$store.state.erc721Metadata.enabled ? [this.$store.state.erc721Metadata.name, this.$store.state.erc721Metadata.symbol] : [],
       }).send({
         from: await web3.eth.getAccounts().then((a) => a[0]),
         gas: 3000000,
         gasPrice: '5000000000',
       })
       .then((newContractInstance) => {
-        console.log(newContractInstance)
         return newContractInstance.options.address
       }).catch((err) => {
         console.log('Error', err)
