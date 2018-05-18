@@ -93,17 +93,22 @@ export default {
         arguments: [],
       }).send({
         from: await web3.eth.getAccounts().then((a) => a[0]),
-        gas: 1500000,
+        gas: 3000000,
         gasPrice: '5000000000',
       })
       .then((newContractInstance) => {
+        console.log(newContractInstance)
         return newContractInstance.options.address
       }).catch((err) => {
         console.log('Error', err)
         return null
       });
       this.$store.commit('setContractAddress', address)
-      this.$store.dispatch('goToSuccess')
+      if (!address) {
+        this.$store.dispatch('goToError')
+      } else {
+        this.$store.dispatch('goToSuccess')
+      }
     }
   }
 }
