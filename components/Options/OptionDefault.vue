@@ -24,10 +24,10 @@
       /> -->
     </div>
 
-    <form slot="form" action.prevent.default>
+    <!-- <form slot="form" action.prevent.default>
       <label for="name">Contract name:</label>
       <input v-model="contractName" type="text" placeholder="Enter contract name">
-    </form>
+    </form> -->
 
     <div slot="actions">
       <Button 

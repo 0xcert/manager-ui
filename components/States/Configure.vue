@@ -6,8 +6,8 @@
     </h4>
 
     <div class="errors">
-      <p>Login to Metamask and select Reposten Network</p>
-      <p>You need at least 0.1 ETH (you have 0 ETH)</p>
+      <p>Login to Metamask and select Reposten Network.</p>
+      <p>You'll need some ETH. You can get some <a href="http://ethereumfaucet.info/">here</a>.</p>
     </div>
 
     <strong>Select smart contract features:</strong>

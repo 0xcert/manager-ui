@@ -11,30 +11,35 @@
     <x-nav :class="'toolbar'" center>
       <Button 
         v-if="$store.state.show.create"
+        v-show="isConnected"
         @click.native="review"
         :type="['primary', 'large']">
         Review code
       </Button>
       <Button 
         v-if="$store.state.show.review"
+        v-show="isConnected"
         @click.native="deploy"
         :type="['primary', 'large']">
         Deploy
       </Button>
       <Button 
         v-if="$store.state.show.review"
+        v-show="isConnected"
         @click.native="$store.dispatch('goToCreate')"
         :type="['secondary', 'large']">
         Edit options
       </Button>
       <Button 
         v-if="$store.state.show.success"
+        v-show="isConnected"
         @click.native="$store.dispatch('goToCreate')"
         :type="['secondary', 'large']">
         Create another one!
       </Button>
       <Button 
         v-if="$store.state.show.error"
+        v-show="isConnected"
         @click.native="$store.dispatch('goToReview')"
         :type="['secondary', 'large']">
         Go back
@@ -48,13 +53,30 @@ import Logo from '~/components/Logo'
 import Navigation from '~/components/Navigation'
 
 export default {
+  data () {
+    return {
+      isConnected: false,
+      web3: null
+    }
+  },
+  mounted () {
+    this.$data.web3 = new window.Web3(window.Web3.givenProvider)
+    setInterval(() => {
+      this.setIsConnected();
+    }, 1000);
+  },
   components: {
     Logo,
     Navigation
   },
   methods: {
+    async setIsConnected() {
+      return this.web3.eth.net.getNetworkType().then((d) => {
+        this.$data.isConnected = (d === 'ropsten')
+      })
+    },
     async review () {
-      await this.compile();
+      await this.compile()
       this.$store.dispatch('goToReview')
     },
     async compile () {
@@ -92,8 +114,7 @@ export default {
     },
     async deploy () {
       this.$store.dispatch('goToLoading')
-      const web3 = new window.Web3(window.Web3.givenProvider)
-      const contract = new web3.eth.Contract(this.$store.contract.abi)
+      const contract = new this.web3.eth.Contract(this.$store.contract.abi)
       const address = await contract.deploy({
         data: this.$store.contract.bin,
         arguments: this.$store.state.erc721Metadata.enabled ? [this.$store.state.erc721Metadata.name || '', this.$store.state.erc721Metadata.symbol || ''] : [],
