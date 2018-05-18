@@ -6,7 +6,10 @@
     <div slot="close" class="offside--close" @click="$store.commit('showEnumerable', false)"><img src="/close.svg"/></div>
 
     <div slot="body">
-      <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
+      <p>
+        The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract
+        to be interrogated for its name and for details about the assets which your NFTs represent.
+      </p>
       <Toggler 
         @click.native.once="$store.commit('enableEnumerable')"
         :checked="$store.state.enableEnumerable"

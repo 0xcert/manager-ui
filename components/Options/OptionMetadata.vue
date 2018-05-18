@@ -6,7 +6,10 @@
     <div slot="close" class="offside--close" @click="$store.commit('showMetadata', false)"><img src="/close.svg"/></div>
 
     <div slot="body">
-      <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
+      <p>
+        The enumeration extension is OPTIONAL for ERC-721 smart contracts. This allows your contract
+        to publish its full list of NFTs and make them discoverable.
+      </p>
       <Toggler 
         @click.native.once="$store.commit('enableMetadata')"
         :checked="$store.state.enableMetadata"
@@ -15,11 +18,9 @@
 
     <form slot="form">
       <label for="name">Name:</label>
-      <input name="name" type="text" placeholder="Enter name">
+      <input v-model="name" type="text" placeholder="Enter name">
       <label for="name">Symbol:</label>
-      <input name="symbol" type="text" placeholder="Enter symbol">
-      <label for="name">URI:</label>
-      <input name="uri" type="text" placeholder="Enter URI">
+      <input v-model="symbol" type="text" placeholder="Enter symbol">
     </form>
     
     <div slot="actions">
@@ -38,9 +39,12 @@ export default {
     return {
       name: '',
       symbol: '',
-      uri: '',
       enabled: false
     }
+  },
+  mounted () {
+    this.$data.name = this.$store.state.erc721Metadata.name
+    this.$data.symbol = this.$store.state.erc721Metadata.symbol
   },
   methods: {
     submit () {

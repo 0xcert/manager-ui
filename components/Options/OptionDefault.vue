@@ -12,16 +12,21 @@
     </div>
 
     <div slot="body">
-      <p>Competently cultivate next-generation best practices whereas functionalized web-readiness. Energistically procrastinate client-focused products without adaptive convergence. </p>
-      <Toggler 
+      <p>
+        A standard interface allows wallet/broker/auction applications to work with any NFT on Ethereum.
+        This standard is inspired by the ERC-20 token standard and builds on two years of experience since
+        EIP-20 was created. EIP-20 is insufficient for tracking NFTs because each asset is distinct
+        (non-fungible) whereas each of a quantity of tokens is identical (fungible).
+      </p>
+      <!-- <Toggler 
         @click.native.once="$store.commit('enableDefault')"
         :checked="$store.state.enableDefault"
-      />
+      /> -->
     </div>
 
     <form slot="form" action.prevent.default>
       <label for="name">Contract name:</label>
-      <input name="contractName" type="text" placeholder="Enter contract name">
+      <input v-model="contractName" type="text" placeholder="Enter contract name">
     </form>
 
     <div slot="actions">
@@ -41,6 +46,9 @@ export default {
       contractName: 'MyToken',
       enabled: false
     }
+  },
+  mounted () {
+    this.$data.contractName = this.$store.state.erc721.contractName
   },
   methods: {
     submit () {

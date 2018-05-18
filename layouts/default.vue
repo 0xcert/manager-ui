@@ -55,7 +55,7 @@ export default {
       // RPC client initialization
       var jaysonBrowserClient = require('jayson/lib/client/browser');
       var callServer = function(request, callback) {
-        fetch('http://localhost:4444', {
+        fetch('https://manager-rpc.0xcert.org', {
           method: 'POST',
           body: request,
           headers: {
@@ -70,9 +70,9 @@ export default {
       // build solidity code through RPC
       const [src, bin, abi] = await new Promise((resolve, reject) => {
         client.request('compile', [
-          this.$store.erc721,
-          this.$store.erc721Metadata,
-          this.$store.erc721Enumerable,
+          this.$store.state.erc721,
+          this.$store.state.erc721Metadata,
+          this.$store.state.erc721Enumerable,
         ], function(err, error, result) {
           if(err) {
             reject(err);

@@ -14,13 +14,13 @@ const createStore = () => {
       showMetadata: false,
       showEnumerable: false,
       showCertificate: false,
-      enableDefault: false,
+      enableDefault: true,
       enableMetadata: false,
       enableEnumerable: false,
       enableCertificate: false,
-      erc721: {},
-      erc721Metadata: {},
-      erc721Enumerable: {},
+      erc721: { contractName: 'MyToken', enabled: true },
+      erc721Metadata: { enabled: false },
+      erc721Enumerable: { enabled: false },
       contract: {},
       contractAddress: ''
     },
@@ -29,13 +29,18 @@ const createStore = () => {
         state.contractAddress = address
       },
       setErc721(state, data) {
-        state.erc721 = data
+        state.erc721 = {
+          contractName: data.contractName ? data.contractName : 'MyToken',
+          enabled: state.enableDefault
+        }
       },
       setErc721Metadata(state, data) {
         state.erc721Metadata = data
+        state.erc721Metadata.enabled = state.enableMetadata
       },
       setErc721Enumerable(state, data) {
         state.erc721Enumerable = data
+        state.erc721Enumerable.enabled = state.enableEnumerable
       },
       setContract(state, data) {
         state.contract = data
@@ -70,12 +75,15 @@ const createStore = () => {
       },
       enableDefault(state) {
         state.enableDefault = !state.enableDefault
+        state.erc721.enabled = !state.enableDefault
       },
       enableMetadata(state) {
         state.enableMetadata = !state.enableMetadata
+        state.erc721Metadata.enabled = !state.enableMetadata
       },
       enableEnumerable(state) {
         state.enableEnumerable = !state.enableEnumerable
+        state.erc721Enumerable.enabled = !state.enableEnumerable
       },
       enableCertificate(state) {
         state.enableCertificate = !state.enableCertificate
