@@ -7,8 +7,8 @@
 
     <div slot="body">
       <p>
-        The enumeration extension is OPTIONAL for ERC-721 smart contracts. This allows your contract
-        to publish its full list of NFTs and make them discoverable.
+        The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract
+        to be interrogated for its name and for details about the assets which your NFTs represent.
       </p>
       <Toggler 
         @click.native.once="$store.commit('enableMetadata')"

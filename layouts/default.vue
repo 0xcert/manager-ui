@@ -71,8 +71,8 @@ export default {
       const [src, bin, abi] = await new Promise((resolve, reject) => {
         client.request('compile', [
           this.$store.state.erc721,
-          this.$store.state.erc721Metadata,
           this.$store.state.erc721Enumerable,
+          this.$store.state.erc721Metadata,
         ], function(err, error, result) {
           if(err) {
             reject(err);
