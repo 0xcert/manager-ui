@@ -6,7 +6,7 @@
     </h4>
 
     <div class="errors">
-      <p>Login to Metamask and select Reposten Network.</p>
+      <p>Unlock your Metamask and select Reposten Network.</p>
       <p>You'll need some ETH. You can get some <a href="http://ethereumfaucet.info/">here</a>.</p>
     </div>
 
