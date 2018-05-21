@@ -115,15 +115,15 @@ export default {
     async deploy () {
       this.$store.dispatch('goToLoading')
       const contract = new this.web3.eth.Contract(this.$store.contract.abi)
+      const accounts = await this.web3.eth.getAccounts();
       const address = await contract.deploy({
         data: this.$store.contract.bin,
         arguments: this.$store.state.erc721Metadata.enabled ? [this.$store.state.erc721Metadata.name || '', this.$store.state.erc721Metadata.symbol || ''] : [],
       }).send({
-        from: await web3.eth.getAccounts().then((a) => a[0]),
+        from: accounts[0],
         gas: 3000000,
         gasPrice: '5000000000',
-      })
-      .then((newContractInstance) => {
+      }).then((newContractInstance) => {
         return newContractInstance.options.address
       }).catch((err) => {
         console.log('Error', err)
