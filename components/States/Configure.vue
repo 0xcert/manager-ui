@@ -7,7 +7,7 @@
 
     <div class="errors">
       <p>Unlock your Metamask and select Ropsten Network.</p>
-      <p>You'll need some ETH. You can get some <a href="http://ethereumfaucet.info/">here</a>.</p>
+      <p>You'll need some ETH. You can get some <a href="https://faucet.metamask.io">here</a>.</p>
     </div>
 
     <strong>Select smart contract features:</strong>
