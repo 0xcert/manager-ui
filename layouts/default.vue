@@ -168,6 +168,7 @@ body {
 #__layout {
   background: linear-gradient(to bottom right, $primary, #32CAE8 );
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: center;
 }
