@@ -1,5 +1,7 @@
 # [0xcert](https://0xcert.org)-manager-ui
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/0xcert/manager-ui.svg?token=99de86d26982e668de4b79539615605305e867cf77faa5843ee409b4ae064050&ts=1534608359774)](https://greenkeeper.io/)
+
 This project is the official 0xcert manager repository.
 
 ## Credits
