@@ -20,13 +20,13 @@
   "devDependencies": {
     "ajv": "^6.5.0",
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
+    "eslint": "^5.4.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^4.0.0",
     "node-sass": "^4.7.2",
     "nuxt-sass-resources-loader": "^2.0.0",
-    "sass-loader": "^6.0.6",
-    "vue-timeago": "^3.4.4"
+    "sass-loader": "^7.1.0",
+    "vue-timeago": "^5.0.0"
   }
 }
